@@ -4,10 +4,5 @@ const $ = window.$
 // let files = window.files
 
 $(document).ready(() => {
-  $('.fileSubmit').on('click', () => {
-      $.ajax({
-          url: '/upload',
-          method: 'post'
-      })
-  })
+
 })
