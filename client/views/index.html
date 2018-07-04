@@ -22,31 +22,24 @@
                <h1>WebServ SMS Blaster</h1>	
             </div>
         </header>  
+        
+        <form ref='uploadForm' 
+        id='uploadForm' 
+        action='/upload' 
+        method='post' 
+        encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+        </form>    
              
-        <section class="row">
-            <div class="col-xs-12">						
-                <h2 id="introHeader">Upload your CSV File</h2>
-                
-                <fieldset>
-                    <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
-                </fieldset>
-        </section>
             
         <footer class="row">
             <div class="col-xs-12">	
                 <p>By Preston Powell Copyright WebServ 2018</p>
             </div>
-
-            <form ref='uploadForm' 
-            id='uploadForm' 
-            action='http://localhost:8000/upload' 
-            method='post' 
-            encType="multipart/form-data">
-              <input type="file" name="sampleFile" />
-              <!-- <input type='submit' value='Upload!' /> -->
-          </form>     
         </footer>
-    </div>		
+    </div>
+    
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>   
