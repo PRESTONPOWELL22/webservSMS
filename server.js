@@ -8,12 +8,18 @@ const path = require('path')
 app.use(fileUpload())
 
 // routes ==============================================================================================================
+
 // API Routes
 app.use('/', require('./API/routes/apiRoutes').router)
-// Route for static HTML
+
+// Routes for static HTML
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/views/index.html'))
-}) // Send the static HTML
+})
+
+app.get('/landing.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/views/landing.html'))
+})
 
 // listener ============================================================================================================
 app.listen(PORT)
