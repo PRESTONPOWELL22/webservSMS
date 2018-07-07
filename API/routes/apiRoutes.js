@@ -19,6 +19,8 @@ router.route('/upload')
         .pipe(csv())
         .on('data', function (data) {
           console.log(data)
+          csvData.push(data)
+          console.log(csvData[0])
         })
     })
   })
