@@ -5,7 +5,12 @@ const fs = require('fs')
 const MessagingResponse = require('twilio').twiml.MessagingResponse
 const SMS = require('../models/SMS')
 var bodyparser = require('body-parser')
+var Twilio = require('twilio')
+ 
+// const accountSid = process.env.TWILIO_SID // Your Account SID from www.twilio.com/console
+// const authToken = process.env.TWILIO_TOKEN // Your Auth Token from www.twilio.com/console
 
+// var client = new Twilio(accountSid, authToken)
 router.use(bodyparser.urlencoded({ extended: false }))
 
 // .csv routing =========================================================================================================
@@ -43,9 +48,10 @@ router.route('/sms') // this curently responds whatever you text twillio
 router.route('/send/sms')
   .post((req, res) => {
     var txtMessage = req.body.message
+    console.log(txtMessage)
     var number = req.body.number
     SMS.sendText(txtMessage, number)
-    console.log(req.body)
+    // console.log(req.body)
   })
 
 module.exports.router = router

@@ -8,11 +8,15 @@ var client = new Twilio(accountSid, authToken)
 
 module.exports = {
   sendText: function (txtMessage, number) {
+    console.log(txtMessage, number)
     client.messages.create({
-      body: txtMessage,
       to: number, // Text this number
-      from: '+19496819184' // From a valid Twilio number
+      from: process.env.TWILIO_NUMBER, // From a valid Twilio number
+      body: txtMessage
     })
-      .then((message) => console.log(message.sid))
+      .then((message) => {
+        console.log(message.sid)
+      })
+      .catch(err => console.err(err))
   }
 }

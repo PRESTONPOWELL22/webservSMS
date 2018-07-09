@@ -475,7 +475,7 @@ $(document).ready(function(){
   $('#subscribe').on('click', () => {
     var message = $('#message').val()
     var number = $('#phone').val()
-    $.post('/send/sms', {'messsage': message, 'number': number} ,function (d, s) {
+    $.post('/send/sms', {'message': message, 'number': number} ,function (d, s) {
       alert('text sent')
       console.log(text)
     })
