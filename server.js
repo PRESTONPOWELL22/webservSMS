@@ -6,20 +6,13 @@ const path = require('path')
 
 // middleware ==========================================================================================================
 app.use(fileUpload())
-
+app.use('/static', express.static(path.join(__dirname, './client/views/routes/htmlRoutes')))
 // routes ==============================================================================================================
 
 // API Routes
 app.use('/', require('./API/routes/apiRoutes').router)
-
-// Routes for static HTML
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/views/index.html'))
-})
-
-app.get('/landing.html', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/views/landing.html'))
-})
+// HTML Routes
+app.use('/', require('./client/views/routes/htmlRoutes').router)
 
 // listener ============================================================================================================
 app.listen(PORT)
