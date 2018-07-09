@@ -44,14 +44,16 @@ router.route('/sms') // this curently responds whatever you text twillio
     res.end(twiml.toString())
   })
 
+
+
 // send sms from frontend form
 router.route('/send/sms')
   .post((req, res) => {
-    var txtMessage = req.body.message
-    console.log(txtMessage)
     var number = req.body.number
+    var txtMessage = req.body.message
     SMS.sendText(txtMessage, number)
     // console.log(req.body)
   })
+
 
 module.exports.router = router
