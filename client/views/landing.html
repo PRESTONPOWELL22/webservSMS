@@ -216,12 +216,12 @@
 
 <div class="jumbotron text-center">
   <h1>WebServ SMS</h1> 
-  <p>A tool for SMS marketing automation!</p> 
+  <p>A <a href='/tool'>tool</a> for SMS <a href='dashboard'>marketing</a> automation!</p> 
   <form>
     <div class="input-group">
       <input type="email" class="form-control" size="50" placeholder="Email Address" required>
       <div class="input-group-btn">
-        <button type="button" class="btn btn-danger">Subscribe</button>
+        <button type="button" class="btn btn-danger" id="subscribe">Subscribe</button>
       </div>
     </div>
   </form>
@@ -471,6 +471,12 @@
 
 <script>
 $(document).ready(function(){
+  $('#subscribe').on('click', () => {
+    $.post('/sms', function (d, s) {
+
+      console.log(d)
+    })
+  })
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
     // Make sure this.hash has a value before overriding default behavior

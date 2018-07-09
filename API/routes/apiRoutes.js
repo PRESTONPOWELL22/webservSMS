@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-var csv = require('csv-parser')
-var fs = require('fs')
+const csv = require('csv-parser')
+const fs = require('fs')
+const MessagingResponse = require('twilio').twiml.MessagingResponse
 
 var csvData = []
 
@@ -23,6 +24,17 @@ router.route('/upload')
           console.log(csvData[0])
         })
     })
+  })
+
+router.route('/sms')
+  .post((req, res) => {
+    console.log(req.body.Body)
+    const twiml = new MessagingResponse()
+
+    twiml.message('Get Fucked!')
+
+    res.writeHead(200, {'Content-Type': 'text/xml'})
+    res.end(twiml.toString())
   })
 
 module.exports.router = router
