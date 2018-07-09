@@ -219,7 +219,8 @@
   <p>A <a href='/tool'>tool</a> for SMS <a href='dashboard'>marketing</a> automation!</p> 
   <form>
     <div class="input-group">
-      <input type="text" class="form-control" id='message' size="50" placeholder="Email Address" required>
+      <input type="text" class="form-control" id='message' size="50" placeholder="message" required>
+      <input type="tel" class="form-control" id='phone' size="30" placeholder="phone" required>
       <div class="input-group-btn">
         <button type="button" class="btn btn-danger" id="subscribe">Subscribe</button>
       </div>
@@ -473,7 +474,8 @@
 $(document).ready(function(){
   $('#subscribe').on('click', () => {
     var message = $('#message').val()
-    $.post('/send/sms', {'messsage': message} ,function (d, s) {
+    var number = $('#phone').val()
+    $.post('/send/sms', {'messsage': message, 'number': number} ,function (d, s) {
       alert('text sent')
       console.log(text)
     })

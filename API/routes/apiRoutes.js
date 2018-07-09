@@ -42,8 +42,9 @@ router.route('/sms') // this curently responds whatever you text twillio
 // send sms from frontend form
 router.route('/send/sms')
   .post((req, res) => {
-    var message = req.body.message
-    SMS.sendText(message)
+    var txtMessage = req.body.message
+    var number = req.body.number
+    SMS.sendText(txtMessage, number)
     console.log(req.body)
   })
 
