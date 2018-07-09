@@ -3,9 +3,12 @@ const router = express.Router()
 const csv = require('csv-parser')
 const fs = require('fs')
 const MessagingResponse = require('twilio').twiml.MessagingResponse
+const SMS = require('../models/SMS')
+var bodyparser = require('body-parser')
 
-var csvData = []
+router.use(bodyparser.urlencoded({ extended: false }))
 
+// .csv routing =========================================================================================================
 router.route('/upload')
   .post((req, res) => {
     if (!req.files) { return res.status(400).send('No files were uploaded.') }
@@ -20,21 +23,28 @@ router.route('/upload')
         .pipe(csv())
         .on('data', function (data) {
           console.log(data)
-          csvData.push(data)
-          console.log(csvData[0])
         })
     })
   })
 
-router.route('/sms')
+// SMS Routing=========================================================================================================
+router.route('/sms') // this curently responds whatever you text twillio
   .post((req, res) => {
     console.log(req.body.Body)
     const twiml = new MessagingResponse()
 
-    twiml.message('Get Fucked!')
+    twiml.message('The Hosts are attacking')
 
     res.writeHead(200, {'Content-Type': 'text/xml'})
     res.end(twiml.toString())
+  })
+
+// send sms from frontend form
+router.route('/send/sms')
+  .post((req, res) => {
+    var message = req.body.message
+    SMS.sendText(message)
+    console.log(req.body)
   })
 
 module.exports.router = router

@@ -6,9 +6,13 @@ var authToken = process.env.TWILIO_TOKEN // Your Auth Token from www.twilio.com/
 
 var client = new Twilio(accountSid, authToken)
 
-functionclient.messages.create({
-  body: 'Hey HOW ARE YOU',
-  to: '+19496773222', // Text this number
-  from: '+19496819184' // From a valid Twilio number
-})
-  .then((message) => console.log(message.sid))
+module.exports = {
+  sendText: function (message) {
+    client.messages.create({
+      body: message,
+      to: '+19494349389', // Text this number
+      from: '+19496819184' // From a valid Twilio number
+    })
+      .then((message) => console.log(message.sid))
+  }
+}

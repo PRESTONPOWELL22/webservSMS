@@ -219,7 +219,7 @@
   <p>A <a href='/tool'>tool</a> for SMS <a href='dashboard'>marketing</a> automation!</p> 
   <form>
     <div class="input-group">
-      <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+      <input type="text" class="form-control" id='message' size="50" placeholder="Email Address" required>
       <div class="input-group-btn">
         <button type="button" class="btn btn-danger" id="subscribe">Subscribe</button>
       </div>
@@ -472,9 +472,10 @@
 <script>
 $(document).ready(function(){
   $('#subscribe').on('click', () => {
-    $.post('/sms', function (d, s) {
-
-      console.log(d)
+    var message = $('#message').val()
+    $.post('/send/sms', {'messsage': message} ,function (d, s) {
+      alert('text sent')
+      console.log(text)
     })
   })
   // Add smooth scrolling to all links in navbar + footer link
