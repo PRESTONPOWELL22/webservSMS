@@ -33,9 +33,16 @@ router.route('/upload')
   })
 
 // SMS Routing=========================================================================================================
+let messages = []
+
+router.route('/messages')
+  .get((req, res) => {
+    res.send(messages)
+  })
+
 router.route('/sms') // this curently responds whatever you text twillio
   .post((req, res) => {
-    console.log(req.body.Body)
+    messages.push(req.body.Body)
     const twiml = new MessagingResponse()
 
     twiml.message('The Hosts are attacking')
