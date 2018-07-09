@@ -38,6 +38,7 @@ let messages = []
 router.route('/messages')
   .get((req, res) => {
     res.send(messages)
+    console.log('ping')
   })
 
 router.route('/sms') // this curently responds whatever you text twillio
@@ -45,7 +46,7 @@ router.route('/sms') // this curently responds whatever you text twillio
     messages.push(req.body.Body)
     const twiml = new MessagingResponse()
 
-    twiml.message('The Hosts are attacking')
+    // twiml.message('The Hosts are attacking')
 
     res.writeHead(200, {'Content-Type': 'text/xml'})
     res.end(twiml.toString())
