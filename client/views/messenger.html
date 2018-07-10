@@ -93,7 +93,7 @@ var counter = 0
             if (counter === 0) {
                 for (i=0; i<d.length; i++) {
                     $('#chatbox')
-                    .append(`<p>message: ${d[i]}</p>`)
+                    .append(`<p style='text-align: left;'>message: ${d[i]}</p>`)
                     counter = index
                 }
             }
@@ -114,7 +114,9 @@ var counter = 0
     $.post('/send/sms', {'message': message, 'number': number} ,function (d, s) {
       alert('text sent')
     })
-    $('#chatbox').append(message)
+    $('#usermsg').empty()
+    $('#phone').empty()
+    $('#chatbox').append(`<div style='text-align: right;'>${message}<div>`)
   }) 
 })
 </script>
