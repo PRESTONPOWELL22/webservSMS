@@ -2,11 +2,8 @@ const express = require('express')
 const router = express.Router()
 const csv = require('csv-parser')
 const fs = require('fs')
-const MessagingResponse = require('twilio').twiml.MessagingResponse
 const SMS = require('../models/SMS')
-var bodyparser = require('body-parser')
-var Twilio = require('twilio')
- 
+var bodyparser = require('body-parser') 
 // const accountSid = process.env.TWILIO_SID // Your Account SID from www.twilio.com/console
 // const authToken = process.env.TWILIO_TOKEN // Your Auth Token from www.twilio.com/console
 
@@ -33,7 +30,6 @@ router.route('/upload')
   })
 
 // SMS Routing=========================================================================================================
-let messages = []
 
 router.route('/messages')
   .get((req, res) => {
@@ -41,17 +37,6 @@ router.route('/messages')
     console.log('ping')
   })
 
-router.route('/sms') // this curently responds whatever you text twillio
-  .post((req, res) => {
-    messages.push(req.body.Body)
-    console.log(messages)
-    // const twiml = new MessagingResponse()
-
-    // twiml.message('The Hosts are attacking')
-
-    // res.writeHead(200, {'Content-Type': 'text/xml'})
-    // res.end(twiml.toString())
-  })
 
 // send sms from frontend form
 router.route('/send/sms')

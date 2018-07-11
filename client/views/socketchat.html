@@ -16,6 +16,7 @@
   <body>
     <ul id="messages"></ul>
     <form action="">
+      <input id='n' placeholder="phone number"/>
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
 </body>
@@ -26,14 +27,20 @@
   $(document).ready(() => {
     var socket = io()
     $('form').submit(() => {
-      input = $('#m').val()
-      socket.emit('chat message', input)
+      m = $('#m').val()
+      n = $('#n').val()
+      socket.emit('chat message', m)
+      $('#messages').append($('<li>').text(m))
+      $.post('/send/sms', {'message': m, 'number': n} ,function (d, s) {
+      console.log('text sent')
+    })
       $('#m').val('')
       return false
     })
-    socket.on('chat message', function(msg){
+    socket.on('inboundmsg', function(msg){
       $('#messages').append($('<li>').text(msg))
     })
+
   })
 </script>
 

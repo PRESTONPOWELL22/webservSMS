@@ -5,6 +5,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
+const router = require('./API/routes/apiRoutes').router
 const PORT = 3000 || process.env.PORT
 
 // middleware ==========================================================================================================
@@ -25,6 +26,13 @@ io.on('connection', (socket) => {
     console.log('msg: ' + msg)
   })
 })
+
+router.route('/sms')
+  .post((req, res) => {
+    let event = req.body.Body
+    io.emit('inboundmsg', event)
+    console.log(event)
+  })
 
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
