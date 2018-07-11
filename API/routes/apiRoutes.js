@@ -44,12 +44,13 @@ router.route('/messages')
 router.route('/sms') // this curently responds whatever you text twillio
   .post((req, res) => {
     messages.push(req.body.Body)
-    const twiml = new MessagingResponse()
+    console.log(messages)
+    // const twiml = new MessagingResponse()
 
     // twiml.message('The Hosts are attacking')
 
-    res.writeHead(200, {'Content-Type': 'text/xml'})
-    res.end(twiml.toString())
+    // res.writeHead(200, {'Content-Type': 'text/xml'})
+    // res.end(twiml.toString())
   })
 
 // send sms from frontend form

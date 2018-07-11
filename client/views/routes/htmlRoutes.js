@@ -23,4 +23,9 @@ router.route('/messenger')
     res.sendFile('messenger.html', html)
   })
 
+router.route('/socket')
+  .get((req, res) => {
+    res.sendFile('socketchat.html', html)
+  })
+
 module.exports.router = router
