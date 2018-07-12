@@ -31,12 +31,6 @@ router.route('/upload')
 
 // SMS Routing=========================================================================================================
 
-router.route('/messages')
-  .get((req, res) => {
-    res.send(messages)
-    console.log('ping')
-  })
-
 
 // send sms from frontend form
 router.route('/send/sms')

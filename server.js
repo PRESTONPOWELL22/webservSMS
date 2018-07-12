@@ -22,9 +22,6 @@ app.use('/', require('./client/views/routes/htmlRoutes').router)
 // socket for chat listener
 io.on('connection', (socket) => {
   console.log('a user connected')
-  socket.on('chat message', (msg) => {
-    console.log('msg: ' + msg)
-  })
 })
 
 router.route('/sms')
