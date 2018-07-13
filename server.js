@@ -10,7 +10,8 @@ const PORT = 3000 || process.env.PORT
 
 // middleware ==========================================================================================================
 app.use(fileUpload())
-app.use('/static', express.static(path.join(__dirname, './client/views/routes/htmlRoutes')))
+// app.use('/static', express.static(path.join(__dirname, './client/views/routes/htmlRoutes')))
+app.use(express.static(path.join(__dirname, './client/')))
 app.use(bodyParser.urlencoded({ extended: false }))
 // routes ==============================================================================================================
 

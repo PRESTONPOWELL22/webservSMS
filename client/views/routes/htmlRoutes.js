@@ -20,7 +20,7 @@ router.route('/dashboard')
 
 router.route('/messenger')
   .get((req, res) => {
-    res.sendFile('socketchat.html', html)
+    res.sendFile('messenger.html', html)
   })
 
 module.exports.router = router
