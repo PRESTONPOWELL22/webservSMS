@@ -3,11 +3,8 @@ const router = express.Router()
 const csv = require('csv-parser')
 const fs = require('fs')
 const SMS = require('../models/SMS')
-var bodyparser = require('body-parser') 
-// const accountSid = process.env.TWILIO_SID // Your Account SID from www.twilio.com/console
-// const authToken = process.env.TWILIO_TOKEN // Your Auth Token from www.twilio.com/console
+var bodyparser = require('body-parser')
 
-// var client = new Twilio(accountSid, authToken)
 router.use(bodyparser.urlencoded({ extended: false }))
 
 // .csv routing =========================================================================================================
@@ -31,7 +28,6 @@ router.route('/upload')
 
 // SMS Routing=========================================================================================================
 
-
 // send sms from frontend form
 router.route('/send/sms')
   .post((req, res) => {
@@ -39,7 +35,6 @@ router.route('/send/sms')
     console.log(txtMessage)
     var number = req.body.number
     SMS.sendText(txtMessage, number)
-    // console.log(req.body)
   })
 
 module.exports.router = router

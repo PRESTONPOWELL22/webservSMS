@@ -10,7 +10,7 @@ router.route('/')
 
 router.route('/tool')
   .get((req, res) => {
-    res.sendFile('index.html', html)
+    res.sendFile('tool.html', html)
   })
 
 router.route('/dashboard')
